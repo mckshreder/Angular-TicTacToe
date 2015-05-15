@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tictactoe">
+<head>
+    <meta charset="utf-8">
+	<link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Tic Tac Toe</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/GameController.js"></script>
+	
+</head>
+
+<body ng-controller="TicTacController" id="container">
+<div class="board">
+<h1>Tic Tac Toe</h1>
+    <table>
+      <tr id="row1">
+        <td class="cell" ng-click="drawMark(0)">{{cells[0]}}</td>
+        <td class="cell" ng-click="drawMark(1)">{{cells[1]}}</td>
+        <td class="cell" ng-click="drawMark(2)">{{cells[2]}}</td>
+      </tr>
+      <tr id="row2">
+        <td class="cell" ng-click="drawMark(3)">{{cells[3]}}</td>
+        <td class="cell" ng-click="drawMark(4)">{{cells[4]}}</td>
+        <td class="cell" ng-click="drawMark(5)">{{cells[5]}}</td>
+      </tr>
+      <tr id="row3">
+        <td class="cell" ng-click="drawMark(6)">{{cells[6]}}</td>
+        <td class="cell" ng-click="drawMark(7)">{{cells[7]}}</td>
+        <td class="cell" ng-click="drawMark(8)">{{cells[8]}}</td>
+      </tr>
+    </table>
+  </div>
+		
+	</div>
+	
+	<div class="left">
+		<br />
+		<div class="reset" ng-click="clearBoard()">New Game</div>
+		<p><input type="text" id="p1_name" ng-model="player1Name" ng-init="player1Name = 'Player 1'" ng-click="setName1(player1Name)" ng-keyup="removeFocus1($event)" /><p>
+		<p id="left_message">{{leftMessage}}</p>
+		<p id="p1_score">{{leftScore}}</p>
+		<br />
+		<br />
+		<p><input type="text" id="p2_name" ng-model="player2Name" ng-init="player2Name = 'Player 2'" ng-click="setName2(player2Name)" ng-keyup="removeFocus2($event)"/><p>
+		<br />
+		<br />
+		<p id="right_message">{{rightMessage}}</p>
+		<p id="p2_score">{{rightScore}}</p>
+	</div>
+	
+	<!-- <div class="left"> 
+	
+
+	</div>  -->
+
+
+	
+
+</body>
+
+</html>
+
