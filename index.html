@@ -5,6 +5,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 	<title>Tic Tac Toe</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
@@ -41,24 +42,16 @@
 	<div class="left">
 		<br />
 		<div class="reset" ng-click="clearBoard()">New Game</div>
-		<p><input type="text" id="p1_name" ng-model="player1Name" ng-init="player1Name = 'Player 1'" ng-click="setName1(player1Name)" ng-keyup="removeFocus1($event)" /><p>
+		<p><input type="text" id="p1_name" ng-model="player1Name" ng-init="player1Name = 'Insert name...'" ng-click="setName1(player1Name)" ng-keyup="removeFocus1($event)" /><p>
 		<p id="left_message">{{leftMessage}}</p>
-		<p id="p1_score">{{leftScore}}</p>
-		<br />
-		<br />
-		<p><input type="text" id="p2_name" ng-model="player2Name" ng-init="player2Name = 'Player 2'" ng-click="setName2(player2Name)" ng-keyup="removeFocus2($event)"/><p>
-		<br />
-		<br />
+		<p id="p1_score">{{player1Name}} has {{leftScore}} Wins</p>
+		</br>
+		</br>
+		<p><input type="text" id="p2_name" ng-model="player2Name" ng-init="player2Name = 'Insert name...'" ng-click="setName2(player2Name)" ng-keyup="removeFocus2($event)"/><p>
 		<p id="right_message">{{rightMessage}}</p>
-		<p id="p2_score">{{rightScore}}</p>
+		<p id="p2_score">{{player2Name}} has {{rightScore}} Wins</p>
 	</div>
 	
-	<!-- <div class="left"> 
-	
-
-	</div>  -->
-
-
 	
 
 </body>

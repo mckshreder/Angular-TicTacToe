@@ -25,8 +25,10 @@ angular.module('tictactoe')
             }
         }
         console.log($scope.cells)
-        if ($scope.gameover === false) evaluateWin();
-    };
+        if ($scope.gameover === false){ 
+            evaluateWin();
+            } 
+    }
 
     var evaluateWin = function() {
         if ($scope.cells[0] == "x" && $scope.cells[1] == "x" && $scope.cells[2] == "x") {
@@ -92,7 +94,7 @@ angular.module('tictactoe')
 
     var xwin = function () {
         $scope.leftMessage = $scope.player1Name + " wins!";
-        gameover = true;
+        $scope.gameover = true;
         $scope.leftScore += 1;
     };
 
