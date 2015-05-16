@@ -3,9 +3,8 @@
 <head>
     <meta charset="utf-8">
 	<link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 	<title>Tic Tac Toe</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
@@ -16,23 +15,23 @@
 </head>
 
 <body ng-controller="TicTacController" id="container">
-<div class="board">
 <h1>Tic Tac Toe</h1>
-    <table>
+<div class="board">
+	 <table>
       <tr id="row1">
-        <td class="cell" ng-click="drawMark(0)">{{cells[0]}}</td>
-        <td class="cell" ng-click="drawMark(1)">{{cells[1]}}</td>
-        <td class="cell" ng-click="drawMark(2)">{{cells[2]}}</td>
+        <td class="cell" ng-click="drawMark(0)">{{game.cells[0]}}</td>
+        <td class="cell" ng-click="drawMark(1)">{{game.cells[1]}}</td>
+        <td class="cell" ng-click="drawMark(2)">{{game.cells[2]}}</td>
       </tr>
       <tr id="row2">
-        <td class="cell" ng-click="drawMark(3)">{{cells[3]}}</td>
-        <td class="cell" ng-click="drawMark(4)">{{cells[4]}}</td>
-        <td class="cell" ng-click="drawMark(5)">{{cells[5]}}</td>
+        <td class="cell" ng-click="drawMark(3)">{{game.cells[3]}}</td>
+        <td class="cell" ng-click="drawMark(4)">{{game.cells[4]}}</td>
+        <td class="cell" ng-click="drawMark(5)">{{game.cells[5]}}</td>
       </tr>
       <tr id="row3">
-        <td class="cell" ng-click="drawMark(6)">{{cells[6]}}</td>
-        <td class="cell" ng-click="drawMark(7)">{{cells[7]}}</td>
-        <td class="cell" ng-click="drawMark(8)">{{cells[8]}}</td>
+        <td class="cell" ng-click="drawMark(6)">{{game.cells[6]}}</td>
+        <td class="cell" ng-click="drawMark(7)">{{game.cells[7]}}</td>
+        <td class="cell" ng-click="drawMark(8)">{{game.cells[8]}}</td>
       </tr>
     </table>
   </div>
@@ -40,18 +39,23 @@
 	</div>
 	
 	<div class="left">
-		<br />
-		<div class="reset" ng-click="clearBoard()">New Game</div>
-		<p><input type="text" id="p1_name" ng-model="player1Name" ng-init="player1Name = 'Insert name...'" ng-click="setName1(player1Name)" ng-keyup="removeFocus1($event)" /><p>
-		<p id="left_message">{{leftMessage}}</p>
-		<p id="p1_score">{{player1Name}} has {{leftScore}} Wins</p>
+		<div class="reset" ng-click="clearBoard()">Start New Game</div> 
+
+		
+		<p><input type="text" id="p1_name" ng-model="game.player1Name" ng-init="game.player1Name = 'Insert name...'" ng-click="setName1(game.player1Name)" ng-keyup="removeFocus1($event)" /><p>
+		<p id="left_message">{{game.leftMessage}}</p>
+		<p id="p1_score">{{game.player1Name}} has {{game.leftScore}} Wins</p>
 		</br>
 		</br>
-		<p><input type="text" id="p2_name" ng-model="player2Name" ng-init="player2Name = 'Insert name...'" ng-click="setName2(player2Name)" ng-keyup="removeFocus2($event)"/><p>
-		<p id="right_message">{{rightMessage}}</p>
-		<p id="p2_score">{{player2Name}} has {{rightScore}} Wins</p>
+		<p><input type="text" id="p2_name" ng-model="game.player2Name" ng-init="player2Name = 'Insert name...'" ng-click="setName2(game.player2Name)" ng-keyup="removeFocus2($event)"/><p>
+		<p id="right_message">{{game.rightMessage}}</p>
+		<p id="p2_score">{{game.player2Name}} has {{game.rightScore}} Wins</p>
+		</br>
+		</br>
+		</br>
+		</br>
+		<div class="reset" ng-click="resetScore()">Reset Score</div> 
 	</div>
-	
 	
 
 </body>

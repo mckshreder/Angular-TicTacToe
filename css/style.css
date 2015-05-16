@@ -15,12 +15,11 @@ body {
 
 .left {
 	border: 2px solid black;
-    background-color: white;
+  	background: rgba(172,160,144,0.7);
     float: left;
     margin: 10px;
     padding: 10px;
     border-radius: 25px;
-    margin-top: 14%;
 	height:450px;
 }
 	/*background-color: black;
@@ -55,9 +54,9 @@ h1 {
 }
 
 .board {
-	width: 468px;
+	width: 478px;
 	height: 468px;
-	margin-left: 9%;
+	margin-left: 14%;
 	float:left;
 
 }
@@ -70,11 +69,11 @@ h1 {
 	float: left;
 	width: 150px;
 	height: 150px;
-	background-color: #aca090;
+	background: rgba(172,160,144,0.7);
 	margin: 3px;
 	cursor: pointer;
 	border-radius: 5px;
-	opacity: 0.5;
+	opacity: 0.9;
 }
 
 .cell:hover {
@@ -120,7 +119,8 @@ input:focus {
 	float: clear;
 	line-height: 35px;
 	text-align: center;
-	color: #c4b6a4;
+	color: white;
+	margin-top: 8px;
 }
 
 .reset:hover {
