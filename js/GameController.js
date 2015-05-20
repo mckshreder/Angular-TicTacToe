@@ -1,118 +1,140 @@
 angular.module('tictactoe')
     .controller('TicTacController', TicTacController);
   // Get a reference to the Firebase
- function TicTacController($scope) {
-
-    $scope.cells =['','','','','','','','',''];
-    $scope.currentMark = 'o';
-    $scope.empty = true;
-    $scope.moves = 1;
-    $scope.gameover = false;
-    $scope.leftScore = 0;
-    $scope.rightScore = 0;
+  
+TicTacController.$inject = ['$scope','$firebaseObject','$firebaseArray'];
 
 
+ function TicTacController($scope, $firebaseObject, $firebaseArray) {
+
+
+var rootRef = new Firebase("https://tictactoegarrett.firebaseio.com/");
+
+        //sync with top level
+$firebaseObject(rootRef).$bindTo($scope, "game");
+    
     $scope.drawMark = function(index) {
-        if ($scope.gameover === false && $scope.cells[index] === '') {
-            if ($scope.currentMark === 'o') {
-                $scope.cells[index] = 'x';
-                $scope.currentMark = 'x';
-                document.getElementsByClassName("cell").innerHTML = $scope.cells[index];
+        if ($scope.game.gameover === false && $scope.game.cells[index] === "") {
+            if ($scope.game.currentMark === 'o') {
+                $scope.game.cells[index] = 'x';
+                $scope.game.currentMark = 'x';
+
+
+                document.getElementsByClassName("cell").innerHTML = $scope.game.cells[index];
             } else {
-                $scope.cells[index] = 'o';
-                $scope.currentMark = 'o';
-                document.getElementsByClassName("cell").innerHTML = $scope.cells[index];
+                $scope.game.cells[index] = 'o';
+                $scope.game.currentMark = 'o';
+                
+               
+                document.getElementsByClassName("cell").innerHTML = $scope.game.cells[index];
             }
         }
-        console.log($scope.cells)
-        if ($scope.gameover === false) evaluateWin();
-    };
-
-    var evaluateWin = function() {
-        if ($scope.cells[0] == "x" && $scope.cells[1] == "x" && $scope.cells[2] == "x") {
+        console.log($scope.game.cells)
+        if ($scope.game.gameover === false){ 
+            evaluateWin();
+            } 
+            $scope.game.moves += 1;
+    }
+    evaluateWin = function() {
+        if ($scope.game.cells[0] == "x" && $scope.game.cells[1] == "x" && $scope.game.cells[2] == "x") {
             xwin();
-        } else if ($scope.cells[3] == "x" && $scope.cells[4] == "x" && $scope.cells[5] == "x") {
+        } else if ($scope.game.cells[3] == "x" && $scope.game.cells[4] == "x" && $scope.game.cells[5] == "x") {
             xwin();
-        } else if ($scope.cells[6] == "x" && $scope.cells[7] == "x" && $scope.cells[8] == "x") {
+        } else if ($scope.game.cells[6] == "x" && $scope.game.cells[7] == "x" && $scope.game.cells[8] == "x") {
             xwin();
-        } else if ($scope.cells[0]== "x" && $scope.cells[3]== "x" && grid[6] == "x") {
+        } else if ($scope.game.cells[0]== "x" && $scope.game.cells[3]== "x" && grid[6] == "x") {
             xwin();
-        } else if ($scope.cells[1] == "x" && $scope.cells[4] == "x" && $scope.cells[7] == "x") {
+        } else if ($scope.game.cells[1] == "x" && $scope.game.cells[4] == "x" && $scope.game.cells[7] == "x") {
             xwin();
-        } else if ($scope.cells[2] == "x" && $scope.cells[5] == "x" && $scope.cells[8] == "x") {
+        } else if ($scope.game.cells[2] == "x" && $scope.game.cells[5] == "x" && $scope.game.cells[8] == "x") {
             xwin();
-        } else if ($scope.cells[0] == "x" && $scope.cells[4] == "x" && $scope.cells[8] == "x") {
+        } else if ($scope.game.cells[0] == "x" && $scope.game.cells[4] == "x" && $scope.game.cells[8] == "x") {
             xwin();
-        } else if ($scope.cells[2] == "x" && $scope.cells[4] == "x" && $scope.cells[6] == "x") {
+        } else if ($scope.game.cells[2] == "x" && $scope.game.cells[4] == "x" && $scope.game.cells[6] == "x") {
             xwin();
-        } else if ($scope.cells[0] == "o" && $scope.cells[1] == "o" && $scope.cells[2] == "o") {
+        } else if ($scope.game.cells[0] == "o" && $scope.game.cells[1] == "o" && $scope.game.cells[2] == "o") {
             owin();
-        } else if ($scope.cells[3] == "o" && $scope.cells[4] == "o" && $scope.cells[5] == "o") {
+        } else if ($scope.game.cells[3] == "o" && $scope.game.cells[4] == "o" && $scope.game.cells[5] == "o") {
             owin();
-        } else if ($scope.cells[6] == "o" && $scope.cells[7] == "o" && $scope.cells[8] == "o") {
+        } else if ($scope.game.cells[6] == "o" && $scope.game.cells[7] == "o" && $scope.game.cells[8] == "o") {
             owin();
-        } else if ($scope.cells[0]== "o" && $scope.cells[3]== "o" && grid[6] == "o") {
+        } else if ($scope.game.cells[0]== "o" && $scope.game.cells[3]== "o" && grid[6] == "o") {
             owin();
-        } else if ($scope.cells[1] == "o" && $scope.cells[4] == "o" && $scope.cells[7] == "o") {
+        } else if ($scope.game.cells[1] == "o" && $scope.game.cells[4] == "o" && $scope.game.cells[7] == "o") {
             owin();
-        } else if ($scope.cells[2] == "o" && $scope.cells[5] == "o" && $scope.cells[8] == "o") {
+        } else if ($scope.game.cells[2] == "o" && $scope.game.cells[5] == "o" && $scope.game.cells[8] == "o") {
             owin();
-        } else if ($scope.cells[0] == "o" && $scope.cells[4] == "o" && $scope.cells[8] == "o") {
+        } else if ($scope.game.cells[0] == "o" && $scope.game.cells[4] == "o" && $scope.game.cells[8] == "o") {
             owin();
-        } else if ($scope.cells[2] == "o" && $scope.cells[4] == "o" && $scope.cells[6] == "o") {
+        } else if ($scope.game.cells[2] == "o" && $scope.game.cells[4] == "o" && $scope.game.cells[6] == "o") {
             owin();
-        } else if ($scope.moves == 9) {
+        } else if ($scope.game.moves == 9) {
             var messagebox = document.getElementById('message');
-            $scope.leftMessage = "draw...";
-            $scope.rightMessage = "draw...";
-        } else {
-            $scope.moves += 1;
-        }
+            $scope.game.leftMessage = "draw...";
+        } 
     };
 
     $scope.setName1 = function(player1Name) {
-        $scope.player1Name = '';
+        $scope.game.player1Name = "";
     };
 
     $scope.setName2 = function(player2Name) {
-        $scope.player2Name = '';
+        $scope.game.player2Name = "";
     };
 
-    $scope.removeFocus1 = function(key) {
+    removeFocus1 = function(key) {
         if (key.keyCode == 13) {
             key.target.blur();
         }
     };
 
-    $scope.removeFocus2 = function(key) {
+    removeFocus2 = function(key) {
         if (key.keyCode == 13) {
             key.target.blur();
         }
     };
 
-    var xwin = function () {
-        $scope.leftMessage = $scope.player1Name + " wins!";
-        gameover = true;
-        $scope.leftScore += 1;
+    xwin = function () {
+        $scope.game.leftMessage = $scope.game.player1Name + " wins!";
+        $scope.game.gameover = true;
+        $scope.game.leftScore += 1;
     };
 
-    var owin = function () {
-        $scope.rightMessage = $scope.player2Name + " wins!";
-        $scope.gameover = true;
-        $scope.rightScore += 1;
+    owin = function () {
+        $scope.game.rightMessage = $scope.game.player2Name + " wins!";
+        $scope.game.gameover = true;
+        $scope.game.rightScore += 1;
     };
 
     $scope.clearBoard = function() {
         console.log('you tried to clear the board');
-        for (var j = 0; j < $scope.cells.length; j++) {
-            $scope.cells[j] = "";
+        for (var j = 0; j < $scope.game.cells.length; j++) {
+            $scope.game.cells[j] = "";
         }
-        $scope.leftMessage = "";
-        $scope.rightMessage = "";
-        $scope.currentMark = 'o';
-        $scope.empty = true;
-        $scope.moves = 1;
-        $scope.gameover = false;
+        $scope.game.leftMessage = "";
+        $scope.game.rightMessage = "";
+        $scope.game.currentMark = "o";
+        $scope.game.empty = true;
+        $scope.game.moves = 1;
+        $scope.game.gameover = false;
+
     };
 
+    $scope.resetScore =function() {
+         for (var j = 0; j < $scope.game.cells.length; j++) {
+            $scope.game.cells[j] = "";
+        }
+        $scope.game.leftMessage = "";
+        $scope.game.rightMessage = "";
+        $scope.game.currentMark = "o";
+        $scope.game.empty = true;
+        $scope.game.moves = 1;
+        $scope.game.gameover = false;
+        $scope.game.rightScore = 0;
+        $scope.game.leftScore = 0;
+        $scope.game.player1Name = "Input name...";
+        $scope.game.player2Name = "Input name...";
+  
+
+    }
 }
