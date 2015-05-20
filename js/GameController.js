@@ -12,17 +12,20 @@ var rootRef = new Firebase("https://tictactoegarrett.firebaseio.com/");
 
         //sync with top level
 $firebaseObject(rootRef).$bindTo($scope, "game");
-        
-
+    
     $scope.drawMark = function(index) {
         if ($scope.game.gameover === false && $scope.game.cells[index] === "") {
             if ($scope.game.currentMark === 'o') {
                 $scope.game.cells[index] = 'x';
                 $scope.game.currentMark = 'x';
+
+
                 document.getElementsByClassName("cell").innerHTML = $scope.game.cells[index];
             } else {
                 $scope.game.cells[index] = 'o';
                 $scope.game.currentMark = 'o';
+                
+               
                 document.getElementsByClassName("cell").innerHTML = $scope.game.cells[index];
             }
         }
@@ -30,6 +33,7 @@ $firebaseObject(rootRef).$bindTo($scope, "game");
         if ($scope.game.gameover === false){ 
             evaluateWin();
             } 
+            $scope.game.moves += 1;
     }
     evaluateWin = function() {
         if ($scope.game.cells[0] == "x" && $scope.game.cells[1] == "x" && $scope.game.cells[2] == "x") {
@@ -67,10 +71,7 @@ $firebaseObject(rootRef).$bindTo($scope, "game");
         } else if ($scope.game.moves == 9) {
             var messagebox = document.getElementById('message');
             $scope.game.leftMessage = "draw...";
-            $scope.game.rightMessage = "draw...";
-        } else {
-            $scope.game.moves += 1;
-        }
+        } 
     };
 
     $scope.setName1 = function(player1Name) {
@@ -116,13 +117,24 @@ $firebaseObject(rootRef).$bindTo($scope, "game");
         $scope.game.empty = true;
         $scope.game.moves = 1;
         $scope.game.gameover = false;
+
     };
 
     $scope.resetScore =function() {
-    $scope.game.rightScore = 0;
-    $scope.game.leftScore = 0;
-    $scope.game.player1Name = "Player X";
-    $scope.game.player2Name = "Player O";
+         for (var j = 0; j < $scope.game.cells.length; j++) {
+            $scope.game.cells[j] = "";
+        }
+        $scope.game.leftMessage = "";
+        $scope.game.rightMessage = "";
+        $scope.game.currentMark = "o";
+        $scope.game.empty = true;
+        $scope.game.moves = 1;
+        $scope.game.gameover = false;
+        $scope.game.rightScore = 0;
+        $scope.game.leftScore = 0;
+        $scope.game.player1Name = "Input name...";
+        $scope.game.player2Name = "Input name...";
+  
 
     }
 }

@@ -1,11 +1,16 @@
 body {
-	font-family: 'Chewy', cursive;
+	font-family: 'myFirstFont';
 	background-color: white;
 	margin-top: 0 auto;
-	background-image: url('https://i.giphy.com/Sy4BLe494G2d2.gif');
+	background-image: url('../img/giphy.gif');
 	background-size: cover;
 
 }
+@font-face {
+   font-family: myFirstFont;
+   src: url(../img/Microgramma-D-OT-Bold-Extended_30403.ttf);
+}
+
 #container {
     width: 1000px;
     margin: 0 auto;
@@ -15,12 +20,12 @@ body {
 
 .left {
 	border: 2px solid black;
-  	background: rgba(172,160,144,0.7);
+  	background: rgba(172,160,144,0.5);
     float: left;
     margin: 10px;
     padding: 10px;
     border-radius: 25px;
-	height:450px;
+	height:430px;
 }
 	/*background-color: black;
 	width: 228px;
@@ -48,9 +53,9 @@ body {
 }*/
 
 h1 {
-	font-size: 56px;
-	text-align: center;
+	font-size: 65px;
 	color: black;
+	text-align: center;
 }
 
 .board {
@@ -64,7 +69,7 @@ h1 {
 .cell {
 	color: black;
 	text-align: center;
-	line-height: 125px;
+	line-height: 150px;
 	font-size: 100px;
 	float: left;
 	width: 150px;
@@ -74,17 +79,17 @@ h1 {
 	cursor: pointer;
 	border-radius: 5px;
 	opacity: 0.9;
-	-webkit-animation-name: cellTextChangeColor; 
+	/*-webkit-animation-name: cellTextChangeColor; 
     -webkit-animation-duration: 1s; 
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-direction:alternate;
     animation-name: cellTextChangeColor;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-    animation-direction:alternate;
+    animation-direction:alternate;*/
 }
 
-@-webkit-keyframes cellTextChangeColor{
+/*@-webkit-keyframes cellTextChangeColor{
         from {color: #0000ff;}
         to {color:#eac117;}
 }
@@ -92,7 +97,7 @@ h1 {
 @keyframes cellTextChangeColor{
         from {color: #0000ff;}
         to {color:#eac117;}
-}
+}*/
 
 
 .cell:hover {
@@ -106,24 +111,53 @@ h1 {
 
 #left_message, #right_message {
 	margin-top: 30px;
-	color: black;
-	font-size: 24px;
+	font-size: 50px;
+	text-align: center;
+	-webkit-animation-name: cellTextChangeColor; 
+    -webkit-animation-duration: 1s; 
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction:alternate;
+    animation-name: cellTextChangeColor;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
 
+}
+@-webkit-keyframes cellTextChangeColor{
+        from {color: #0000ff;}
+        to {color:#eac117;}
+}
+
+@keyframes cellTextChangeColor{
+        from {color: #0000ff;}
+        to {color:#eac117;}
 }
 
 #p1_name:hover, #p2_name:hover {
 	cursor: pointer;
-	color: #0000ff;
+	color: #7f766a;
 }
 
 #p1_name, #p2_name {
 	background-color: white;
 	color: black;
 	text-align: center;
-	font-family: 'Chewy', cursive;
 	font-size: 18px;
 	width: 180px;
 	border: 2px solid black ;
+	font-family: 'myFirstFont';
+	opacity: 0.8;
+}
+#p1_score, #p2_score {
+background-color: white;
+	color: black;
+	text-align: center;
+	font-size: 18px;
+	width: 180px;
+	border: 2px solid black ;
+	font-family: 'myFirstFont';
+	opacity: 0.8;
+
 }
 
 input:focus {
@@ -189,5 +223,8 @@ input:focus {
         from {color: #0000ff;}
         to {color:#eac117;}
 }*/
+
+
+
 
 

@@ -16,6 +16,8 @@
 
 <body ng-controller="TicTacController" id="container">
 <h1>Tic Tac Toe</h1>
+<p id="left_message">{{game.leftMessage}}</p>
+<p id="right_message">{{game.rightMessage}}</p>
 <div class="board">
 	 <table>
       <tr id="row1">
@@ -39,26 +41,29 @@
 	</div>
 	
 	<div class="left">
-		<div class="reset" ng-click="clearBoard()">Start New Game</div> 
+		<div class="reset" ng-click="clearBoard()">Play New Game</div> 
+		
+		
+		<p><input type="text" id="p1_name" ng-model="game.player1Name" ng-click="setName1(game.player1Name)" ng-keyup="removeFocus1($event)" /><p>
+		<p id="p1_score"> X = {{game.leftScore}} Wins</p>
+		<h1> VS </h1>
+		<p><input type="text" id="p2_name" ng-model="game.player2Name" ng-click="setName2(game.player2Name)" ng-keyup="removeFocus2($event)"/><p>
+		<p id="p2_score"> O = {{game.rightScore}} Wins</p>
+		
+		<div class="reset" ng-click="resetScore()">Refresh Match</div> 
 
 		
-		<p><input type="text" id="p1_name" ng-model="game.player1Name" ng-init="game.player1Name = 'Insert name...'" ng-click="setName1(game.player1Name)" ng-keyup="removeFocus1($event)" /><p>
-		<p id="left_message">{{game.leftMessage}}</p>
-		<p id="p1_score">{{game.player1Name}} has {{game.leftScore}} Wins</p>
-		</br>
-		</br>
-		<p><input type="text" id="p2_name" ng-model="game.player2Name" ng-init="player2Name = 'Insert name...'" ng-click="setName2(game.player2Name)" ng-keyup="removeFocus2($event)"/><p>
-		<p id="right_message">{{game.rightMessage}}</p>
-		<p id="p2_score">{{game.player2Name}} has {{game.rightScore}} Wins</p>
-		</br>
-		</br>
-		</br>
-		</br>
-		<div class="reset" ng-click="resetScore()">Reset Score</div> 
 	</div>
 	
 
 </body>
 
+</br>
+
+</br>
+<iframe width="100%" height="0" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/139340091&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;visual=true"></iframe>
+<footer>
+	<p>Created By Garrett McKenzie</p>
+</footer>
 </html>
 

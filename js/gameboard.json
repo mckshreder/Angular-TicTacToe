@@ -26,5 +26,8 @@
 },
 {
    "player2Name": ""
+},
+{
+  "playerTurn": "x"
 }
 
